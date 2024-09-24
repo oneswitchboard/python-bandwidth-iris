@@ -21,7 +21,7 @@ class RestClient(object):
 
     """HTTP requests wrapper"""
 
-    def request(self, method, url, auth, params=None, data=None,headers=None):
+    def request(self, method, url, auth, params=None, data=None, headers=None, timeout=None):
 
         assert method in ("GET", "POST", "DELETE", "PUT")
 
@@ -30,7 +30,7 @@ class RestClient(object):
 
             response = requests.request(method, url, auth=auth,
                 headers=(HEADERS if headers is None else headers),
-                data=data, params=params)
+                data=data, params=params, timeout=timeout)
 
             response.raise_for_status()
 
