@@ -13,13 +13,14 @@ class Client(object):
 
     def __init__(
             self, url=None, account_id=None, username=None, password=None,
-            filename=None):
+            filename=None, timeout=None):
 
         if url is None:
             url = "https://dashboard.bandwidth.com/api"
 
         self._config = Config(url, account_id, username, password, filename)
         self._rest = RestClient()
+        self._request_timeout = timeout
 
     def _get_uri(self, section=None):
 
@@ -38,7 +39,7 @@ class Client(object):
         return self._rest.request(
                     method, url=self._get_uri(section),
                     auth=(self.config.username, self.config.password),
-                    params=params, data=data, headers=headers)
+                    params=params, data=data, headers=headers, timeout=self._request_timeout)
 
     def delete(self, section=None):
         return self._request("DELETE", section)
