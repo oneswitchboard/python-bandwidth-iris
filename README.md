@@ -1,3 +1,9 @@
+# Switchboard Additions
+
+We've forked this repository in order to upgrade it to python3. We need it because Bandwidth doesn't support subaccount and location creation in its newer SDK. It's also been updated to allow us to pass a timeout parameter through.
+
+NOTE: When making any changes here, be sure to update the version number in `setup.py` and `version.py` in order to ensure that the changes are picked up by pip. You should also create a new tagged release to use so we can track versions pulled into `switchboard-django`.
+
 # Python client library for IRIS / BBS API
 
 ## Needed tools
